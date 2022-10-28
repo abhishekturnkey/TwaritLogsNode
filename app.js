@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/:filename', (req, res) => {
-  let filename = req.params?.filename;
+  let filename = req.params.filename;
   const file = `${__dirname}/logs/${filename}`;
   try {
     if (fs.existsSync(path)) {
@@ -35,7 +35,7 @@ app.post('/addlog', (req, res) => {
     }
     res.status(201).send("Successful")
   } catch(err) {
-    res.send("Unable to write");
+    res.send(err);
   }
 })
 
